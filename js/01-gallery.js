@@ -21,8 +21,8 @@ galleryEl.insertAdjacentHTML('afterbegin', readyGallery);
 galleryEl.addEventListener('click', onPicture);
 function onPicture(e) {
     e.preventDefault()
-    // if (e.target.nodeName === "A") { return console.log("it's not an A-tag")}
-    if (e.target.classList.contains("gallery__link")) { return }
+    if (e.target.nodeName !== "IMG") { return console.log("it's not an IMG-tag")}
+    // if (e.target.classList.contains("gallery__image")) { return console.log("click on an IMG-tag")}
 
     const pictureUrl = e.target.dataset.source
 
