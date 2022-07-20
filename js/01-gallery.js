@@ -30,7 +30,6 @@ function onPicture(e) {
 		<img width="1400" height="900" src="${pictureUrl}">
 	`)
     bigPicture.show()
-
     if (bigPicture) {
 
         document.addEventListener("keydown", e => {
