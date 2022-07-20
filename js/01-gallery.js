@@ -17,25 +17,33 @@ const readyGallery = galleryItems.reduce((stringAcc, imgItem) => {
 
 galleryEl.insertAdjacentHTML('afterbegin', readyGallery);
 
-
 galleryEl.addEventListener('click', onPicture);
 function onPicture(e) {
     e.preventDefault()
     // if (e.target.nodeName !== "IMG") { return console.log("it's not an IMG-tag")}
-    if (!e.target.classList.contains("gallery__image")) { return console.log("it's not an IMG-element")}
+    if (!e.target.classList.contains("gallery__image")) { return console.log("it's not an IMG-element") }
 
     const pictureUrl = e.target.dataset.source
 
     const bigPicture = basicLightbox.create(`
 		<img width="1400" height="900" src="${pictureUrl}">
-	`)
+	`, {
+        onShow: (bigPicture) => { document.addEventListener("keydown", closeByEsc) },
+        onClose: (bigPicture) => { document.removeEventListener("keydown", closeByEsc) },
+    })
+    
     bigPicture.show()
-    if (bigPicture) {
 
-        document.addEventListener("keydown", e => {
-            if (e.code === "Escape") {
-                bigPicture.close()
-            }
-        })
+
+    function closeByEsc(e) {
+        if (e.code === "Escape") {
+            bigPicture.close()
+        }
+    }
+
+    if (bigPicture.onShow == true) { document.addEventListener("keydown", closeByEsc) }
+
+    bigPicture.onClose = () => {
+        document.removeEventListener("keydown")
     }
 }
