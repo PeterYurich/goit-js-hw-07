@@ -30,10 +30,13 @@ function onPicture(e) {
 		<img width="1400" height="900" src="${pictureUrl}">
 	`)
     bigPicture.show()
-    
-    document.addEventListener("keydown", e => {
-    if (e.code === "Escape") {
-        bigPicture.close()
+
+    if (bigPicture) {
+
+        document.addEventListener("keydown", e => {
+            if (e.code === "Escape") {
+                bigPicture.close()
+            }
+        })
     }
-})
 }
