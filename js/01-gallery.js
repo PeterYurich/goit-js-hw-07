@@ -22,7 +22,7 @@ galleryEl.addEventListener('click', onPicture);
 function onPicture(e) {
     e.preventDefault()
     // if (e.target.nodeName !== "IMG") { return console.log("it's not an IMG-tag")}
-    if (!e.target.classList.contains("gallery__image")) { return console.log("it's not an IMG-tag")}
+    if (!e.target.classList.contains("gallery__image")) { return console.log("it's not an IMG-element")}
 
     const pictureUrl = e.target.dataset.source
 
