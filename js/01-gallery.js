@@ -26,7 +26,14 @@ function onPicture(e) {
 
     const pictureUrl = e.target.dataset.source
 
-    basicLightbox.create(`
+    const bigPicture = basicLightbox.create(`
 		<img width="1400" height="900" src="${pictureUrl}">
-	`).show()
+	`)
+    bigPicture.show()
+    
+    document.addEventListener("keydown", e => {
+    if (e.code === "Escape") {
+        bigPicture.close()
+    }
+})
 }
