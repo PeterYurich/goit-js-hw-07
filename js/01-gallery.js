@@ -40,10 +40,3 @@ function onPicture(e) {
             bigPicture.close()
         }
     }
-
-    if (bigPicture.onShow == true) { document.addEventListener("keydown", closeByEsc) }
-
-    bigPicture.onClose = () => {
-        document.removeEventListener("keydown")
-    }
-}
